@@ -1,0 +1,32 @@
+@mixin breakpoint($point, $minWidth: null) {
+  @if $point == 'large-device' { // larger than 1200px
+    @media (min-width: $desktop) {
+      @content;
+    }
+
+  } @else if $point == 'desktop' { // between 992px and 1200px
+    @media (min-width: $tablet) {
+      @content;
+    }
+
+  } @else if $point == 'tablet' { // between 768px and 992px
+    @media (min-width: $mobile)  {
+      @content;
+    }
+
+  } @else if $point == 'mobile' { // smaller than 768px
+    @media (max-width: $mobile)  {
+      @content;
+    }
+
+  } @else if $minWidth == true {
+    @media (min-width: $point) {
+      @content;
+    }
+
+  } @else {
+    @media (max-width: $point)  {
+      @content;
+    }
+  }
+}
